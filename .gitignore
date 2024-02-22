@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/AirfieldXMLEditor/bin
+/AirfieldXMLEditor/obj/Debug
+/AirfieldXMLEditor/obj/Release
+/AirfieldXMLEditor/test_data
