@@ -4,7 +4,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace AirfieldXMLEditor
 {
@@ -152,51 +151,48 @@ namespace AirfieldXMLEditor
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            // Get hold of the data because we will delete this node next
-            string icao_code = txtbx_icao_code.Text;
-            string airport_name = txtbx_airport_name.Text;
-            string latitude_deg = txtbx_latitude_deg.Text;
-            string latitude_dec = txtbx_latitude_dec.Text;
-            string longitude_deg = txtbx_longitude_deg.Text;
-            string longitude_dec = txtbx_longitude_dec.Text;
-            string elevation_m = txtbx_elevation_m.Text;
-            string elevation_ft = txtbx_elevation_ft.Text;
-            string iata_code = txtbx_iata_code.Text;
-            string alternate_name = txtbx_alternate_name.Text;
-            string fir = txtbx_fir.Text;
-            string city = txtbx_city.Text;
-            string type = txtbx_type.Text;
-
-            if (DeleteData(txtbx_airport_name.Text)) //Delete the node
+            
+            if (chkbx_backup.Checked) //Backup existing file when we update anything if box is checked.
             {
-                //Re-add the node with stored information
-                XDocument doc = XDocument.Load(lbl_file_name.Text);
-                XElement root = new XElement("airport_info");
+                File.Copy(lbl_file_name.Text,
+                    "backups\\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".xml");
+            }
 
-                root.Add(new XElement("icao_code", icao_code));
-                root.Add(new XElement("airport_name", airport_name));
-                root.Add(new XElement("latitude_deg", latitude_deg));
-                root.Add(new XElement("latitude_dec", latitude_dec));
-                root.Add(new XElement("longitude_deg", longitude_deg));
-                root.Add(new XElement("longitude_dec", longitude_dec));
-                root.Add(new XElement("elevation_m", elevation_m));
-                root.Add(new XElement("elevation_ft", elevation_ft));
-                root.Add(new XElement("iata_code", iata_code));
-                root.Add(new XElement("alternate_name", alternate_name));
-                root.Add(new XElement("fir", fir));
-                root.Add(new XElement("city", city));
-                root.Add(new XElement("type", type));
+            XmlDocument doc = new XmlDocument();
+            doc.Load(lbl_file_name.Text);
 
-                doc.Element("uk_airports").Add(root);
+            XmlNode node = doc.SelectSingleNode("//airport_info[airport_name ='" + cmbobx_airport_info.Text + "']");
+
+            // if found....
+            if (node != null)
+            {
+                ///////////////////////////////////////////////////////////////////////
+                // We do not allow the updating of the ICAO code or the airport name.
+                ///////////////////////////////////////////////////////////////////////
+                
+                //node["icao_code"].InnerText = txtbx_icao_code.Text;
+                //node["airport_name"].InnerText = txtbx_airport_name.Text;
+                node["latitude_deg"].InnerText = txtbx_latitude_deg.Text;
+                node["latitude_dec"].InnerText = txtbx_latitude_dec.Text;
+                node["longitude_deg"].InnerText = txtbx_longitude_deg.Text;
+                node["longitude_dec"].InnerText = txtbx_longitude_dec.Text;
+                node["elevation_m"].InnerText = txtbx_elevation_m.Text;
+                node["elevation_ft"].InnerText = txtbx_elevation_ft.Text;
+                node["iata_code"].InnerText = txtbx_iata_code.Text;
+                node["alternate_name"].InnerText = txtbx_alternate_name.Text;
+                node["fir"].InnerText = txtbx_fir.Text;
+                node["city"].InnerText = txtbx_city.Text;
+                node["type"].InnerText = txtbx_type.Text;
+                
                 doc.Save(lbl_file_name.Text);
 
                 cmbobx_airport_info.Items.Clear();
                 PopulateAirfieldCmboBx(lbl_file_name.Text);
-                cmbobx_airport_info.SelectedItem = airport_name;
+                cmbobx_airport_info.SelectedItem = txtbx_airport_name.Text;
 
                 cmbobx_icao.Items.Clear();
                 PopulateICAOCmboBx(lbl_file_name.Text);
-                cmbobx_icao.SelectedItem = icao_code;
+                cmbobx_icao.SelectedItem = txtbx_icao_code.Text;
 
             }
         }
