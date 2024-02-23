@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CenteredMessagebox;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -232,6 +233,12 @@ namespace AirfieldXMLEditor
                 doc.Save(lbl_file_name.Text);
             }
             return true;
+        }
+
+        private void btn_about_Click(object sender, EventArgs e)
+        {
+            MsgBox.Show("Build with Jetbrains Rider\rhttps://www.jetbrains.com/rider/", "About", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

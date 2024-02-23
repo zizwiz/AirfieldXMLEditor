@@ -73,6 +73,7 @@ namespace AirfieldXMLEditor
             this.cmbobx_icao = new System.Windows.Forms.ComboBox();
             this.chkbx_icao_file = new System.Windows.Forms.CheckBox();
             this.lbl_file_name = new System.Windows.Forms.Label();
+            this.btn_about = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_open
@@ -441,11 +442,22 @@ namespace AirfieldXMLEditor
             this.lbl_file_name.TabIndex = 42;
             this.lbl_file_name.Text = "file_name";
             // 
+            // btn_about
+            // 
+            this.btn_about.Location = new System.Drawing.Point(589, 587);
+            this.btn_about.Name = "btn_about";
+            this.btn_about.Size = new System.Drawing.Size(46, 55);
+            this.btn_about.TabIndex = 43;
+            this.btn_about.Text = "?";
+            this.btn_about.UseVisualStyleBackColor = true;
+            this.btn_about.Click += new System.EventHandler(this.btn_about_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 654);
+            this.Controls.Add(this.btn_about);
             this.Controls.Add(this.lbl_file_name);
             this.Controls.Add(this.chkbx_icao_file);
             this.Controls.Add(this.lbl_choose_icao);
@@ -544,6 +556,7 @@ namespace AirfieldXMLEditor
         private System.Windows.Forms.ComboBox cmbobx_icao;
         private System.Windows.Forms.CheckBox chkbx_icao_file;
         private System.Windows.Forms.Label lbl_file_name;
+        private System.Windows.Forms.Button btn_about;
     }
 }
 
