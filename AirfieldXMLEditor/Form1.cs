@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -50,11 +42,12 @@ namespace AirfieldXMLEditor
                 {
                     filePath = openFileDialog.FileName;
                     lbl_file_name.Text = filePath;
-                    PopulateAirfieldCmboBx(filePath);
-                    cmbobx_airport_info.SelectedIndex = 0;
-
+                    
                     PopulateICAOCmboBx(filePath);
                     cmbobx_icao.SelectedIndex = 0;
+
+                    PopulateAirfieldCmboBx(filePath);
+                    cmbobx_airport_info.SelectedIndex = 0;
                 }
             }
         }
@@ -147,6 +140,9 @@ namespace AirfieldXMLEditor
                 txtbx_city.Text = node["city"].InnerText;
                 txtbx_type.Text = node["type"].InnerText;
             }
+
+            cmbobx_icao.SelectedItem = txtbx_icao_code.Text;
+            cmbobx_airport_info.SelectedItem = txtbx_airport_name.Text;
         }
 
 
@@ -227,7 +223,6 @@ namespace AirfieldXMLEditor
                 // save to file
                 doc.Save(lbl_file_name.Text);
             }
-
             return true;
         }
     }
