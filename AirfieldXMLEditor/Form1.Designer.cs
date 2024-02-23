@@ -65,7 +65,7 @@ namespace AirfieldXMLEditor
             this.label15 = new System.Windows.Forms.Label();
             this.txtbx_iata_code = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkbx_backup = new System.Windows.Forms.CheckBox();
             this.btn_update = new System.Windows.Forms.Button();
             this.cmbobx_airport_info = new System.Windows.Forms.ComboBox();
             this.lbl_choose_airfield = new System.Windows.Forms.Label();
@@ -361,17 +361,17 @@ namespace AirfieldXMLEditor
             this.label16.TabIndex = 19;
             this.label16.Text = "IATA Code";
             // 
-            // checkBox1
+            // chkbx_backup
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(249, 601);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(113, 24);
-            this.checkBox1.TabIndex = 35;
-            this.checkBox1.Text = "Backup file";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkbx_backup.AutoSize = true;
+            this.chkbx_backup.Checked = true;
+            this.chkbx_backup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkbx_backup.Location = new System.Drawing.Point(249, 601);
+            this.chkbx_backup.Name = "chkbx_backup";
+            this.chkbx_backup.Size = new System.Drawing.Size(113, 24);
+            this.chkbx_backup.TabIndex = 35;
+            this.chkbx_backup.Text = "Backup file";
+            this.chkbx_backup.UseVisualStyleBackColor = true;
             // 
             // btn_update
             // 
@@ -453,7 +453,7 @@ namespace AirfieldXMLEditor
             this.Controls.Add(this.lbl_choose_airfield);
             this.Controls.Add(this.cmbobx_airport_info);
             this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkbx_backup);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox10);
@@ -536,7 +536,7 @@ namespace AirfieldXMLEditor
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtbx_iata_code;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkbx_backup;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.ComboBox cmbobx_airport_info;
         private System.Windows.Forms.Label lbl_choose_airfield;

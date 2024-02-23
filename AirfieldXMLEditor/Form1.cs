@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
@@ -20,6 +21,8 @@ namespace AirfieldXMLEditor
             cmbobx_airport_info.Visible = lbl_choose_airfield.Visible = true;
             cmbobx_icao.Visible = lbl_choose_icao.Visible = false;
             lbl_file_name.Visible = false;
+
+            Directory.CreateDirectory("backups");
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace AirfieldXMLEditor
                 {
                     filePath = openFileDialog.FileName;
                     lbl_file_name.Text = filePath;
-                    
+
                     PopulateICAOCmboBx(filePath);
                     cmbobx_icao.SelectedIndex = 0;
 
@@ -199,6 +202,11 @@ namespace AirfieldXMLEditor
 
         private bool DeleteData(string myAirportName)
         {
+            if (chkbx_backup.Checked) //Backup existing file when we update anything if box is checked.
+            {
+                File.Copy(lbl_file_name.Text,
+                    "backups\\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".xml");
+            }
 
             // create the XML, load the contents
             XmlDocument doc = new XmlDocument();
