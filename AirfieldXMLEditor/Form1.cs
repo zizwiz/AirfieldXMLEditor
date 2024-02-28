@@ -113,6 +113,7 @@ namespace AirfieldXMLEditor
 
         private void GetData(bool flag, string myData)
         {
+            ClearData();
             XmlDocument doc = new XmlDocument();
             doc.Load(lbl_file_name.Text);
 
@@ -172,6 +173,22 @@ namespace AirfieldXMLEditor
             cmbobx_airport_info.SelectedItem = txtbx_airport_name.Text;
         }
 
+
+        private void ClearData()
+        {
+            txtbx_icao_code.Text = txtbx_airport_name.Text = txtbx_latitude_deg.Text = txtbx_latitude_dec.Text = 
+                txtbx_longitude_deg.Text = txtbx_longitude_dec.Text = txtbx_elevation_m.Text = 
+                    txtbx_elevation_ft.Text = txtbx_iata_code.Text = txtbx_alternate_name.Text = txtbx_fir.Text = 
+                        txtbx_city.Text = txtbx_type.Text = txtbx_radio.Text = txtbx_runway1_headings.Text = 
+                            txtbx_runway1_surface.Text = txtbx_runway1_length.Text = txtbx_runway1_width.Text = 
+                                txtbx_runway2_headings.Text = txtbx_runway2_surface.Text = 
+                                    txtbx_runway2_length.Text = txtbx_runway2_width.Text = 
+                                        txtbx_runway3_headings.Text = txtbx_runway3_surface.Text = 
+                                            txtbx_runway3_length.Text = txtbx_runway3_width.Text = 
+                                                txtbx_runway4_headings.Text = txtbx_runway4_surface.Text = 
+                                                    txtbx_runway4_length.Text = txtbx_runway4_width.Text = " ";
+
+        }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
@@ -314,84 +331,84 @@ namespace AirfieldXMLEditor
                     XmlElement elem = doc.CreateElement("runway2_headings");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway2_headings"].InnerText = txtbx_runway1_headings.Text;
+                node["runway2_headings"].InnerText = txtbx_runway2_headings.Text;
 
                 if (node["runway2_surface"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway2_surface");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway2_surface"].InnerText = txtbx_runway1_surface.Text;
+                node["runway2_surface"].InnerText = txtbx_runway2_surface.Text;
 
                 if (node["runway2_length"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway2_length");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway2_length"].InnerText = txtbx_runway1_length.Text;
+                node["runway2_length"].InnerText = txtbx_runway2_length.Text;
 
                 if (node["runway2_width"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway2_width");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway2_width"].InnerText = txtbx_runway1_width.Text;
+                node["runway2_width"].InnerText = txtbx_runway2_width.Text;
                 
                 if (node["runway3_headings"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway3_headings");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway3_headings"].InnerText = txtbx_runway1_headings.Text;
+                node["runway3_headings"].InnerText = txtbx_runway3_headings.Text;
 
                 if (node["runway3_surface"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway3_surface");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway3_surface"].InnerText = txtbx_runway1_surface.Text;
+                node["runway3_surface"].InnerText = txtbx_runway3_surface.Text;
 
                 if (node["runway3_length"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway3_length");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway3_length"].InnerText = txtbx_runway1_length.Text;
+                node["runway3_length"].InnerText = txtbx_runway3_length.Text;
 
                 if (node["runway3_width"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway3_width");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway3_width"].InnerText = txtbx_runway1_width.Text;
+                node["runway3_width"].InnerText = txtbx_runway3_width.Text;
                 
                 if (node["runway4_headings"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway4_headings");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway4_headings"].InnerText = txtbx_runway1_headings.Text;
+                node["runway4_headings"].InnerText = txtbx_runway4_headings.Text;
 
                 if (node["runway4_surface"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway4_surface");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway4_surface"].InnerText = txtbx_runway1_surface.Text;
+                node["runway4_surface"].InnerText = txtbx_runway4_surface.Text;
 
                 if (node["runway4_length"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway4_length");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway4_length"].InnerText = txtbx_runway1_length.Text;
+                node["runway4_length"].InnerText = txtbx_runway4_length.Text;
 
                 if (node["runway4_width"] == null)
                 {
                     XmlElement elem = doc.CreateElement("runway4_width");
                     node.InsertAfter(elem, node.LastChild);
                 }
-                node["runway4_width"].InnerText = txtbx_runway1_width.Text;
+                node["runway4_width"].InnerText = txtbx_runway4_width.Text;
                 
 
                 doc.Save(lbl_file_name.Text);
